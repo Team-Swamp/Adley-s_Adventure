@@ -39,6 +39,6 @@ public class Mana : MonoBehaviour
     /// <param name="addedMana">Amount of mana to add.</param>
     public void AddMana(float addedMana)
     {
-        _mana = Mathf.Clamp(addedMana, 0f, maxMana);
+        _mana = Mathf.Clamp(_mana + addedMana, 0f, maxMana);
     }
 }
