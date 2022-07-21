@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Vector3 _rotation;
+    
     [Header("References")]
     [SerializeField] private Rigidbody rb;
     
@@ -52,14 +54,20 @@ public class PlayerMovement : MonoBehaviour
         
         rb.velocity = new Vector3(direction.x * movementSpeed, rb.velocity.y, direction.y * movementSpeed);
 
-        var rotation = new Vector3();
-        if (direction.x > 0) rotation = new Vector3(0, 90, 0);
-        if (direction.x < 0) rotation = new Vector3(0, -90, 0);
-        if (direction.y > 0) rotation = new Vector3(0, 0, 0);
-        if (direction.y < 0) rotation = new Vector3(0, 180, 0);
-        
-        transform.eulerAngles = rotation;
+        if(direction != new Vector2(0,0)) Rotate(direction);
 
         if (rb.velocity == startMovingThreshold) _mayStartMoving = true;
+    }
+
+    private void Rotate(Vector2 direction)
+    {
+        var newRotation = new Vector3();
+        if (direction.x > 0) newRotation = new Vector3(0, 90, 0);
+        if (direction.x < 0) newRotation = new Vector3(0, -90, 0);
+        if (direction.y > 0) newRotation = new Vector3(0, 0, 0);
+        if (direction.y < 0) newRotation = new Vector3(0, 180, 0);
+
+        _rotation = newRotation;
+        transform.localEulerAngles = _rotation;
     }
 }
