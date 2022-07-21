@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,17 +18,28 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Event Variables")]
     [SerializeField] private UnityEvent onStartMoving = new UnityEvent();
-    
-    public void Move(Vector2 dir)
-    {
-        rb.velocity = new Vector3(dir.x * walkSpeed, rb.velocity.y, dir.y * walkSpeed);
+    [SerializeField] private UnityEvent moving = new UnityEvent();
 
-        if (rb.velocity == startMoveThreshold) _isStartMoving = true;
-        
+    private void FixedUpdate()
+    {
         if (rb.velocity != startMoveThreshold && _isStartMoving)
         {
             onStartMoving?.Invoke();
             _isStartMoving = false;
         }
+
+        if (rb.velocity != new Vector3(0,rb.velocity.y,0)) moving?.Invoke();
+    }
+
+    public void Move(Vector2 dir)
+    {
+        rb.velocity = new Vector3(dir.x * walkSpeed, rb.velocity.y, dir.y * walkSpeed);
+
+        if (rb.velocity == startMoveThreshold) _isStartMoving = true;
+    }
+
+    public void EventTest()
+    {
+        Debug.Log("test");
     }
 }
