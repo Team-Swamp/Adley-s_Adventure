@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 startMoveThreshold = new Vector3(0, 0, 0);
     [SerializeField] private Vector2 movingDir;
 
-    [Header("Bool's")]
+    [Header("Bools")]
     [SerializeField] private bool isMoving;
     private bool _isStartMoving = true;
     private bool _mayStopMoving = true;
@@ -53,10 +53,5 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(dir.x * walkSpeed, rb.velocity.y, dir.y * walkSpeed);
 
         if (rb.velocity == startMoveThreshold) _isStartMoving = true;
-    }
-
-    public void EventTest()
-    {
-        Debug.Log("test");
     }
 }
