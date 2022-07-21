@@ -371,8 +371,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1355067128}
-  walkSpeed: 0
+  walkSpeed: 5
+  startMoveThreshold: {x: 0, y: 0, z: 0}
   onStartMoving:
+    m_PersistentCalls:
+      m_Calls: []
+  moving:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1355067127}
