@@ -10,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     
     [Header("Value's")]
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private Vector3 startMoveThreshold = new Vector3(0, 0, 0);
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private Vector3 startMovingThreshold = Vector3.zero;
     [SerializeField] private Vector2 movingDir;
 
     [Header("Bools")]
     [SerializeField] private bool isMoving;
-    private bool _isStartMoving = true;
+    private bool _mayStartMoving = true;
     private bool _mayStopMoving = true;
 
     [Header("Event Variables")]
@@ -26,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity != startMoveThreshold && _isStartMoving)
+        if (rb.velocity != startMovingThreshold && _mayStartMoving)
         {
             onStartMoving?.Invoke();
-            _isStartMoving = false;
+            _mayStartMoving = false;
         }
 
         if (rb.velocity != new Vector3(0, rb.velocity.y, 0))
@@ -46,12 +46,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Move(Vector2 dir)
+    public void Move(Vector2 direction)
     {
-        movingDir = dir;
+        movingDir = direction;
         
-        rb.velocity = new Vector3(dir.x * walkSpeed, rb.velocity.y, dir.y * walkSpeed);
+        rb.velocity = new Vector3(direction.x * movementSpeed, rb.velocity.y, direction.y * movementSpeed);
 
-        if (rb.velocity == startMoveThreshold) _isStartMoving = true;
+        if (rb.velocity == startMovingThreshold) _mayStartMoving = true;
     }
 }

@@ -20,7 +20,7 @@ public class InputParser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 moveInput = _playerControlsActions["Move"].ReadValue<Vector2>();
+        var moveInput = _playerControlsActions["Move"].ReadValue<Vector2>();
         playerMovement.Move(moveInput);
     }
 }
