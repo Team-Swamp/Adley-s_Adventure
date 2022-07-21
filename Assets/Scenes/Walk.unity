@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1355067128}
-  movementSpeed: 0
+  movementSpeed: 5
   startMovingThreshold: {x: 0, y: 0, z: 0}
   movingDir: {x: 0, y: 0}
   isMoving: 0
