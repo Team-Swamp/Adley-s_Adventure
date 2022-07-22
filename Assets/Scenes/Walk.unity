@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1355067127}
-  playerHealthData: {fileID: 0}
+  playerHealthData: {fileID: 1355067122}
 --- !u!114 &1355067127
 MonoBehaviour:
   m_ObjectHideFlags: 0
