@@ -24,7 +24,7 @@ public class Mana : MonoBehaviour
     {
         _mana = maxMana;
         _interval = regenInterval;
-        _cooldown = regenCooldown;
+        _cooldown = 0f;
     }
     
     private void Update()
