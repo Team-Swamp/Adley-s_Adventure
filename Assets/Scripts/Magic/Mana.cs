@@ -13,12 +13,29 @@ public class Mana : MonoBehaviour
     [SerializeField] private float maxMana;
     [SerializeField] private float minMana;
 
+    [SerializeField] private float regenInterval;
+    [SerializeField] private float regenAmount;
+
     private float _mana;
+    private float _interval;
     private void Start()
     {
         _mana = maxMana;
+        _interval = regenInterval;
     }
+    
+    private void Update()
+    {
+        _interval -= Time.deltaTime;
 
+        if (_interval > 0f) return;
+
+        AddMana(regenAmount);
+        
+        // We add regenInterval instead of setting _interval to it since _interval goes into the negatives, this makes the interval more accurate.
+        _interval += regenInterval;
+    }
+    
     /// <summary>
     /// Try to use given amount of mana.
     /// </summary>
