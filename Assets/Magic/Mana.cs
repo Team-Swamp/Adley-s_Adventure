@@ -2,10 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Mana : MonoBehaviour
 {
+    [Header("Event Variables")]
+    [SerializeField] private UnityEvent onFull = new UnityEvent();
+    [SerializeField] private UnityEvent onEmpty = new UnityEvent();
+    
     [SerializeField] private float maxMana;
+    [SerializeField] private float minMana;
 
     private float _mana;
     private void Start()
@@ -18,18 +24,13 @@ public class Mana : MonoBehaviour
     /// </summary>
     /// <param name="expendedMana">The amount of mana to subtract from the mana pool.</param>
     /// <returns>True if succeeded, false otherwise.</returns>
-    /// <example>
-    /// <code>
-    /// bool succeeded = UseMana(50f);
-    /// if (!succeeded) return; // There wasn't enough mana.
-    /// // Use magic
-    /// </code>
-    /// </example>
     public bool UseMana(float expendedMana)
     {
-        if (_mana - expendedMana < 0f) return false;
+        if (_mana - expendedMana < minMana) return false;
 
         _mana -= expendedMana;
+        
+        if(_mana == minMana) onEmpty.Invoke();
         return true;
     }
 
@@ -39,6 +40,11 @@ public class Mana : MonoBehaviour
     /// <param name="addedMana">Amount of mana to add.</param>
     public void AddMana(float addedMana)
     {
-        _mana = Mathf.Clamp(_mana + addedMana, 0f, maxMana);
+        // if the mana pool is already at max there is no need to add to it. (Prevents unnecessary invokes of the onFull event.)
+        if (_mana == maxMana) return;
+        
+        _mana = Mathf.Clamp(_mana + addedMana, minMana, maxMana);
+        
+        if (_mana == maxMana) onFull.Invoke();
     }
 }
