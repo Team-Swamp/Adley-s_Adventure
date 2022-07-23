@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HealtTest",
+                    "name": "TakeDamage",
                     "type": "Button",
                     "id": "f4faa249-4fc8-4c99-a68a-bf33a4bcf2ac",
                     "expectedControlType": "Button",
@@ -129,7 +129,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HealtTest",
+                    "action": "TakeDamage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

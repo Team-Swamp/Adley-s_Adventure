@@ -25,6 +25,6 @@ public class InputParser : MonoBehaviour
         var moveInput = _playerControlsActions["Move"].ReadValue<Vector2>();
         playerMovement.Move(moveInput);
         
-        _playerControlsActions["HealtTest"].started += (InputAction.CallbackContext context) => playerHealthData.TakeDamage(2);
+        _playerControlsActions["TakeDamage"].started += (InputAction.CallbackContext context) => playerHealthData.TakeDamage(2);
     }
 }
