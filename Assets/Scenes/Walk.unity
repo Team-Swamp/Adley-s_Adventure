@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1355067125}
   - component: {fileID: 1355067127}
   - component: {fileID: 1355067126}
+  - component: {fileID: 1355067122}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -250,6 +251,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7346523, y: 1.4122326, z: 0.32886338}
   m_Center: {x: 0.009881556, y: 0.20611632, z: -0.0019068643}
+--- !u!114 &1355067122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355067120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665c672f2e2777c47b3254da291fff52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onHealthAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  onResurrected:
+    m_PersistentCalls:
+      m_Calls: []
+  isDead: 0
 --- !u!4 &1355067124
 Transform:
   m_ObjectHideFlags: 0
@@ -258,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355067120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4, z: 0}
+  m_LocalPosition: {x: 0, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450651957672381}
@@ -308,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1355067127}
+  playerHealthData: {fileID: 1355067122}
 --- !u!114 &1355067127
 MonoBehaviour:
   m_ObjectHideFlags: 0
